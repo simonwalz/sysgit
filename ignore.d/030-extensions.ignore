@@ -1,0 +1,15 @@
+# extensions
+*.old
+*.bak
+*.dpkg-dist
+*.dpkg-old
+*.dpkg-remove
+*.ucf-dist
+*.ucf-old
+*.pam-old
+*.dpkg-bak
+*-
+*~
+.*
+
+

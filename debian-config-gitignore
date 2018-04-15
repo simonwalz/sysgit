@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=$(dirname "$SCRIPT")
+
+(
+	cat ${SCRIPTPATH}/ignore.d/*.ignore
+
+	echo
+	echo "# from debsums"
+	debsums -e | grep 'OK$' | sed -e 's/  *OK *$//'
+
+
+	echo
+	echo "# symlinks"
+	find	\
+		/etc/ssl \
+		/etc/fonts \
+		/etc/apache2/mods-enabled \
+		/etc/php/7.0/apache2/conf.d \
+		/etc/php/7.0/cli/conf.d \
+		/etc/php5/apache2/conf.d \
+		/etc/php5/cli/conf.d \
+		-type l
+
+) >/.git/info/exclude
+

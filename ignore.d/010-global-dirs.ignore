@@ -1,0 +1,7 @@
+# global
+/*
+!/etc
+!/usr/local/etc
+!/root
+!/var/spool/cron/crontabs/
+
