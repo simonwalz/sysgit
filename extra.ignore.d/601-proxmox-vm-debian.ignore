@@ -1,0 +1,5 @@
+# general ignore
+#/etc/hostname
+/etc/hosts
+/etc/resolv.conf
+/etc/network/interfaces
