@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+FILE="$1"
+CHKFILE="${FILE/.files-chk/}.ignore-chk"
+
+if test "x${FILE}" = "x" || test "x${FILE}" = "x--help"
+then
+	echo "Create ignore-chk files."
+	echo "--all = for all '*.files-chk' files in all subdirectories"
+	exit 2
+fi
+if test "x${FILE}" = "x--all"
+then
+	find . -iname \*.files-chk -exec $0 \{\} \;
+	exit 0
+fi
+
+echo -n >"${CHKFILE}"
+
+for f in $(cat "${FILE}" | grep -vE "^#")
+do
+	if test "x${f}" != "x"# && test -f "${f}"
+	then
+		#echo "${f}"
+		md5sum "${f}" >>"${CHKFILE}"
+	fi
+done
