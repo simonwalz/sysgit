@@ -1,10 +1,32 @@
 #!/bin/bash
 
+export LANG=C
+export LC_ALL=C
+
+type -p debsums >/dev/null 2>&1
+if test "x$?" = "x1"
+then
+	echo "Please install debsums" >&2
+	echo "apt-get intall debsums" >&2
+	exit 2
+fi
+
 SCRIPT=$(readlink -f "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 
+IGNORE_PATTERN="ignore.d/"
+
+if test -f ${SCRIPTPATH}/config.sh
+then
+	source ${SCRIPTPATH}/config.sh
+fi
+
 (
-	cat ${SCRIPTPATH}/ignore.d/*.ignore
+	for IP in ${IGNORE_PATTERN}
+	do
+		cat ${SCRIPTPATH}/${IP}*.ignore
+		md5sum -c ${SCRIPTPATH}/${IP}*.ignore-chk | grep 'OK$' | sed -e 's/:  *OK *$//'
+	done
 
 	echo
 	echo "# from debsums"
@@ -23,5 +45,5 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 		/etc/php5/cli/conf.d \
 		-type l
 
-) >/.git/info/exclude
+) >/.git/info/exclude 2>/dev/null
 
