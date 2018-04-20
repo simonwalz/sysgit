@@ -20,6 +20,7 @@ a0f2b4e950e6ec3eb959e793730f3ef2  /etc/dhcpcd.secret
 759c556ddf77629de852f78389ad87ce  /etc/dpkg/origins/default
 d41d8cd98f00b204e9800998ecf8427e  /etc/environment
 add400ed5ad0b542c08eba007f1752e1  /etc/fstab
+6d708241c38fff70167c5c59774a4e71  /etc/hostname
 03cd33bc7b0a33c684e981fa27836dc9  /etc/hosts
 d0cfb796d371b0182cd39d589b1c1ce3  /etc/hosts.allow
 208d7a7756d6daa71111bb0296f4ce6a  /etc/hosts.deny

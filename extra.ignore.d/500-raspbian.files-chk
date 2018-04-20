@@ -20,6 +20,7 @@
 /etc/dpkg/origins/default
 /etc/environment
 /etc/fstab
+/etc/hostname
 /etc/hosts
 /etc/hosts.allow
 /etc/hosts.deny
