@@ -1,0 +1,8 @@
+/etc/adjtime
+/etc/sysctl.d/99-sysctl.conf
+/etc/xdg/systemd/user
+/etc/GNUstep/gdomap_probes
+/etc/mysql/debian.cnf
+/etc/postfix/dynamicmaps.cf
+# localtime is a soft link:
+/etc/localtime

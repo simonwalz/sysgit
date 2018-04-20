@@ -1,0 +1,13 @@
+61836dcdaf75f1f1c5b25850251f4bce  /etc/dbus-1/session.conf
+8cd8abff331c202c11871da29bdc1c93  /etc/dbus-1/system.conf
+d41d8cd98f00b204e9800998ecf8427e  /etc/dictionaries-common/ispell-default
+7e2877e5dad6e8e97b0fa43d28f2feca  /etc/dictionaries-common/words
+01f95c4c108d6b5f20b31f0e9c2c6956  /etc/emacs24/site-start.d/00debian-vars.el
+1e80a255658d43837688ff7e3e7ba7fa  /etc/emacs24/site-start.d/00debian-vars.elc
+a806664e067846f960ab858925e78895  /etc/fonts/conf.avail/30-0-google-crosextra-caladea-fontconfig.conf
+86153c40bdaf39d6eaa890671436e443  /etc/fonts/conf.avail/30-0-google-crosextra-carlito-fontconfig.conf
+a34074694dce0a5ccc5844ec0a1315ea  /etc/fonts/conf.avail/30-droid-noto.conf
+722439a38303b7e6f932b2670732f9cd  /etc/fonts/conf.avail/62-google-crosextra-caladea-fontconfig.conf
+c0c2e7d6ebc952b293d4807c9dcd50f2  /etc/fonts/conf.avail/62-google-crosextra-carlito-fontconfig.conf
+d747c3c8c33e2a6a712bf8ee27bd3c7c  /etc/fonts/conf.avail/65-fonts-lmodern.conf
+21c8b9e1fd55ef5d045f1493fd5e9bde  /etc/fonts/conf.avail/65-fonts-texgyre.conf

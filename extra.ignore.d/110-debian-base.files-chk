@@ -1,0 +1,12 @@
+/etc/rc.local
+/etc/mailcap
+/etc/ca-certificates.conf
+/etc/ssl/certs/ca-certificates.crt
+/etc/pam.d/common-auth
+/etc/pam.d/common-password
+/etc/pam.d/common-session
+/etc/network/if-post-down.d/bridge
+/etc/network/if-pre-up.d/bridge
+/etc/idmapd.conf
+etc/initramfs-tools/conf.d/resume
+etc/initramfs-tools/modules

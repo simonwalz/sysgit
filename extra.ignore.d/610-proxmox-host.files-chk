@@ -1,0 +1,4 @@
+/etc/apt/apt.conf.d/76pveproxy
+/etc/issue
+/etc/cron.d/pveupdate
+/etc/default/grub

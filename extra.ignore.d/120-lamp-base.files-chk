@@ -1,0 +1,8 @@
+/etc/php/7.0/cli/php.ini
+/etc/mysql/my.cnf
+/etc/perl/XML/SAX/ParserDetails.ini
+/etc/dbconfig-common/config
+/etc/logrotate.d/dbconfig-common
+/etc/xml/catalog
+/etc/xml/docutils-common.xml
+/etc/xml/xml-core.xml

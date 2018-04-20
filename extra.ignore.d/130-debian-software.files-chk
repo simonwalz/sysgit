@@ -1,0 +1,13 @@
+/etc/dbus-1/session.conf
+/etc/dbus-1/system.conf
+/etc/dictionaries-common/ispell-default
+/etc/dictionaries-common/words
+/etc/emacs24/site-start.d/00debian-vars.el
+/etc/emacs24/site-start.d/00debian-vars.elc
+/etc/fonts/conf.avail/30-0-google-crosextra-caladea-fontconfig.conf
+/etc/fonts/conf.avail/30-0-google-crosextra-carlito-fontconfig.conf
+/etc/fonts/conf.avail/30-droid-noto.conf
+/etc/fonts/conf.avail/62-google-crosextra-caladea-fontconfig.conf
+/etc/fonts/conf.avail/62-google-crosextra-carlito-fontconfig.conf
+/etc/fonts/conf.avail/65-fonts-lmodern.conf
+/etc/fonts/conf.avail/65-fonts-texgyre.conf

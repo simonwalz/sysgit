@@ -1,0 +1,5 @@
+7486755facc6f6f0b7a7bf2ae2c523a9  /etc/php/7.0/cli/php.ini
+46a0151b3b022b225cabb97e6d1ad947  /etc/mysql/my.cnf
+66aa782e1d6a64ae752864ef70253e88  /etc/perl/XML/SAX/ParserDetails.ini
+458108b20f63fe3deb3b9bc1a7efc154  /etc/dbconfig-common/config
+45a82979da0a8c6b3e52fd7dfa4c01ec  /etc/logrotate.d/dbconfig-common

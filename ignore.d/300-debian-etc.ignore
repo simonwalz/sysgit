@@ -1,4 +1,5 @@
 # debian etc extra
+/etc/machine-id
 /etc/mtab
 /etc/os-release
 /etc/passwd.org
