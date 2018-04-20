@@ -64,6 +64,5 @@
 /etc/sysctl.d/99-sysctl.conf
 /etc/timezone
 /etc/wpa_supplicant/wpa_supplicant.conf
-/etc/xdg/systemd/user
 /etc/xml/catalog
 /etc/xml/xml-core.xml

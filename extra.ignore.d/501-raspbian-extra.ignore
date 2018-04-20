@@ -1,3 +1,4 @@
 /etc/resolv.conf
 /etc/fake-hwclock.data
 /etc/network/run
+/etc/xdg/systemd/user
