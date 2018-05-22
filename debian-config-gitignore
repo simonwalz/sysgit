@@ -47,3 +47,4 @@ fi
 
 ) >/.git/info/exclude 2>/dev/null
 
+exit 0
