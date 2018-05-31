@@ -1,5 +1,11 @@
 7486755facc6f6f0b7a7bf2ae2c523a9  /etc/php/7.0/cli/php.ini
+53fa0f920073c97ebef8c06bc4fcf06e  /etc/php/7.0/apache2/php.ini
+e6fa2d74078ac0ac6fd730decf3b3736  /etc/cron.d/php
 46a0151b3b022b225cabb97e6d1ad947  /etc/mysql/my.cnf
 66aa782e1d6a64ae752864ef70253e88  /etc/perl/XML/SAX/ParserDetails.ini
 458108b20f63fe3deb3b9bc1a7efc154  /etc/dbconfig-common/config
 45a82979da0a8c6b3e52fd7dfa4c01ec  /etc/logrotate.d/dbconfig-common
+3eeec9f4558e37c31451ef8b21a7b481  /etc/xml/catalog
+77f0bbeb57f7d6ce0bae540a8ce49a45  /etc/xml/docutils-common.xml
+db5eeaa43363b3f3f024b2231e1606f0  /etc/xml/xml-core.xml
+f0b26fcf90c5ec09635aaa41676e9095  /etc/sgml/catalog

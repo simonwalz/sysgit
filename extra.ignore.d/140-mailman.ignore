@@ -1,0 +1,3 @@
+/etc/mailman/*/*.txt
+/etc/mailman/*/*.html
+#/etc/mailman/mm_cfg.py

@@ -32,7 +32,6 @@
 /etc/staff-group-for-usr-local
 /etc/alternatives
 /etc/aliases.db
-/etc/mailman/*/
 /etc/php5/mods-available/
 /etc/php/7.0/mods-available/
-
+/etc/sasldb2

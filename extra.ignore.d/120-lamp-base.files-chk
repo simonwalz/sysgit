@@ -1,4 +1,6 @@
 /etc/php/7.0/cli/php.ini
+/etc/php/7.0/apache2/php.ini
+/etc/cron.d/php
 /etc/mysql/my.cnf
 /etc/perl/XML/SAX/ParserDetails.ini
 /etc/dbconfig-common/config
@@ -6,3 +8,4 @@
 /etc/xml/catalog
 /etc/xml/docutils-common.xml
 /etc/xml/xml-core.xml
+/etc/sgml/catalog

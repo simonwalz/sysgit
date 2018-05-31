@@ -1,4 +1,8 @@
 /etc/adjtime
+/etc/ca-certificates.conf
+/etc/ssl/certs/ca-certificates.crt
+/etc/ssl/certs/java/cacerts
+/etc/mailcap
 /etc/sysctl.d/99-sysctl.conf
 /etc/xdg/systemd/user
 /etc/GNUstep/gdomap_probes

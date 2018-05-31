@@ -1,2 +1,3 @@
 /etc/cron.d/vzdump
 /etc/iscsi/initiatorname.iscsi
+/etc/ssh/ssh_known_hosts

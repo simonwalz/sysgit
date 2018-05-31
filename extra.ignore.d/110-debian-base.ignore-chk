@@ -1,10 +1,8 @@
 10fd9f051accb6fd1f753f2d48371890  /etc/rc.local
-5c32d18d8e9265c58a56444abbe07b1a  /etc/mailcap
-e72cbef01ebe2d6c4a4080bfce5d8b23  /etc/ca-certificates.conf
-37a02332aeec46d83e8881bc2ac1fccf  /etc/ssl/certs/ca-certificates.crt
 9f114bd9c338ab017db2ee6fee96deaa  /etc/pam.d/common-auth
 da9fa088ad0360208fd3f53b6c77feaf  /etc/pam.d/common-password
 bef27bcf7f74f333f94fbac2e22e8f9f  /etc/pam.d/common-session
 d2b6a8e941399ed616fe88537fb8a44a  /etc/network/if-post-down.d/bridge
 d2b6a8e941399ed616fe88537fb8a44a  /etc/network/if-pre-up.d/bridge
 6e4c2dde6c6970f124de9493e2c286fa  /etc/idmapd.conf
+79b87c663bf8cee37e3d924d5fb6ef68  /etc/cron.d/mdadm

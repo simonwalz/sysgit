@@ -1,0 +1,3 @@
+834510bcaf75cf66e8b2b70f1da79068  /etc/mailman/postfix-to-mailman.py
+0fee404228d3185e442fd88db026a93d  /etc/mailman/qmail-to-mailman.py
+d41d8cd98f00b204e9800998ecf8427e  /etc/mailman/leftover
