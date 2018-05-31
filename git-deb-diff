@@ -1,0 +1,43 @@
+#!/bin/bash
+
+file="$1"
+if test "x${file}" = "x" || test ! -f "${file}"
+then
+	echo "Usage: git deb-diff file"
+	exit 2
+fi
+
+
+package="$(dpkg -S "${file}" | awk -F ': ' '{print $1}')"
+
+if test "x${package}" = "x"
+then
+	package="$(ucfq -w "${file}" | awk -F: '{print $2}')"
+fi
+
+if test "x${package}" = "x"
+then
+	echo "No package found."
+	exit 1
+fi
+
+cache="/var/lib/ucf/cache/${file//\//:}"
+if [ -f "$cache" ]; then
+	vimdiff "${cache}" "${file}"
+	exit 0
+fi
+
+echo "Package: $package"
+
+archive="$(ls /var/cache/apt/archives/${package}_*.deb | tail -n 1)"
+if test "x${archive}" = "x"
+then
+	echo "no archive found."
+	exit 1
+fi
+
+#dpkg-deb --fsys-tarfile "${archive}" | tar -tvf -
+
+content="$(dpkg-deb --fsys-tarfile /var/cache/apt/archives/${package}_*.deb | tar -xvf - ".${file}" -O)"
+
+vimdiff <(echo "${content}") "${file}"
