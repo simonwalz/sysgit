@@ -1,3 +1,5 @@
 .*.un~
 .*.swp
 config.sh
+
+local.ignore-chk

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+(
+	cd /
+	git ls-files -z --others --exclude-standard | xargs -0 md5sum --
+	#cd - >/dev/null 2>&1
+) >>local.ignore-chk
+
+
