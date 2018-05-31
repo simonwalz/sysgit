@@ -22,6 +22,10 @@ then
 fi
 
 (
+	cd /
+
+	md5sum -c /var/lib/ucf/hashfile | grep 'OK$' | sed -e 's/:  *OK *$//'
+
 	for IP in ${IGNORE_PATTERN}
 	do
 		cat ${SCRIPTPATH}/${IP}*.ignore
@@ -45,6 +49,7 @@ fi
 		/etc/php5/cli/conf.d \
 		-type l
 
-) >/.git/info/exclude 2>/dev/null
+) 2>/dev/null | awk '!x[$0]++' >/.git/info/exclude
+# awk '!x[$0]++' == uniq without sorting
 
 exit 0
