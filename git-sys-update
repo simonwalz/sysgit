@@ -1,10 +1,30 @@
 #!/bin/bash
 
+dosave=0
+if test "x$1" = "x--save"
+then
+	shift
+	dosave=1
+fi
+
 variant="$1"
+if test "x${variant}" = "x"
+then
+	if test -f "/etc/sysgit/variant"
+	then
+		variant="$(cat "/etc/sysgit/variant")"
+	fi
+fi
 if test "x${variant}" = "x"
 then
 	variant=base
 fi
+
+if test "x${dosave}" = "x1"
+then
+	echo "${variant}" >"/etc/sysgit/variant"
+fi
+
 
 cd /
 git fetch upstream
