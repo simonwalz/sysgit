@@ -1,0 +1,14 @@
+#!/bin/bash
+
+variant="$1"
+if test "x${variant}" = "x"
+then
+	variant=base
+fi
+
+cd /
+git fetch upstream
+git merge "upstream/${variant}"
+
+git sys-run update
+

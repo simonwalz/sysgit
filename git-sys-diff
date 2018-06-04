@@ -3,7 +3,7 @@
 file="$1"
 if test "x${file}" = "x" || test ! -f "${file}"
 then
-	echo "Usage: git deb-diff file"
+	echo "Usage: git sys-diff config-file"
 	exit 2
 fi
 

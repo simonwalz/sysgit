@@ -1,0 +1,6 @@
+#!/bin/bash
+
+FILE_INIT_COMMANDS=/etc/sysgit/initcommand.sh
+
+exec "${FILE_INIT_COMMANDS}" "$@"
+

@@ -1,4 +1,0 @@
-#!/bin/bash
-
-debian-config-gitignore && git status -uall
-

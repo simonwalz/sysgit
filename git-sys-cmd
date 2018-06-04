@@ -1,0 +1,61 @@
+#!/bin/bash
+
+FILE_INIT_COMMANDS=/etc/sysgit/initcommand.sh
+
+cmdadd() {
+	mkdir -p "$(dirname "${FILE_INIT_COMMANDS}")"
+
+	if test ! -x "${FILE_INIT_COMMANDS}"
+	then
+		echo "#!/bin/bash" >"${FILE_INIT_COMMANDS}"
+		echo "" >>"${FILE_INIT_COMMANDS}"
+		echo "set -e" >>"${FILE_INIT_COMMANDS}"
+		echo "" >>"${FILE_INIT_COMMANDS}"
+		echo "apt-get update" >>"${FILE_INIT_COMMANDS}"
+		echo "apt-get -y upgrade" >>"${FILE_INIT_COMMANDS}"
+		echo "" >>"${FILE_INIT_COMMANDS}"
+		echo "# exit if update"
+		echo "if test \"x\$1\" = \"xupdate\"; then exit 0; fi"
+		echo "" >>"${FILE_INIT_COMMANDS}"
+
+		chmod a+x "${FILE_INIT_COMMANDS}"
+	fi
+
+	echo >>"${FILE_INIT_COMMANDS}"
+	echo "# $(date)" >>"${FILE_INIT_COMMANDS}"
+	# pwd if not HOME
+	if test "x${PWD}" != "x${HOME}"
+	then
+		echo "cd \"${PWD}\"" >>"${FILE_INIT_COMMANDS}"
+		echo "$@" >>"${FILE_INIT_COMMANDS}"
+		echo "cd -" >>"${FILE_INIT_COMMANDS}"
+	else
+		echo "$@" >>"${FILE_INIT_COMMANDS}"
+	fi
+}
+
+if test "x$1" = "xapt" || test "x$1" = "xapt-get"
+then
+	if test "x$2" = "xinstall"
+	then
+		if test "x$3" != "x-y"
+		then
+			shift; shift;
+			cmdadd apt install -y "$@"
+			exec apt install -y "$@"
+		fi
+	fi
+fi
+
+# cmd-add:
+if test "x$1" = "--add"
+then
+	shift
+	cmdadd "$@"
+	exit
+fi
+
+# exec:
+cmdadd "$@"
+exec "$@"
+

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+help() {
+	echo "sysgit - git based debian provisioning toolkit"
+	echo "Usage: git command"
+	echo
+	echo "Commands:"
+	echo "sys-cmd <cmd> - Run command and add it to initial_commands-list"
+	echo "sys-cmd --add <cmd> - Only add command to initial_commands-list"
+	echo "sys-update <variant> - Update to variant. See README.md"
+	echo
+	echo "Examples:"
+	echo "git sys-cmd a2enmod xxx"
+	echo "git sys-cmd npm install -g xxx"
+	exit 2
+}
+
+if test "x$(command -v "git-sys-$1")" != "x"
+then
+	subcmd="$1"
+	shift
+	"git-sys-${subcmd}" "$@"
+	EXIT_STATE=$?
+	exit ${EXIT_STATE}
+fi
+
+help
