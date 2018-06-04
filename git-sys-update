@@ -25,10 +25,27 @@ then
 	echo "${variant}" >"/etc/sysgit/variant"
 fi
 
+if test "x$1" = "x--rebase"
+then
+	cd /
+	git fetch upstream
+
+	rm /.git/hooks/post-merge
+	rm /.git/hooks/post-checkout
+
+	branch="$(git rev-parse --abbrev-ref HEAD)"
+	fork_point="$(git merge-base --fork-point "upstream/${variant}" "${branch}")"
+	git rebase --onto "upstream/${variant}" "${fork_point}" "${branch}"
+
+	/.init.sh checkout
+	exit
+fi
+
 
 cd /
 git fetch upstream
 git merge "upstream/${variant}"
 
+#/.init.sh update
 git sys-run update
 
