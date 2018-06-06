@@ -37,7 +37,7 @@ then
 	fork_point="$(git merge-base --fork-point "upstream/${variant}" "${branch}")"
 	git rebase --onto "upstream/${variant}" "${fork_point}" "${branch}"
 
-	/.init.sh checkout
+	/.sysgit/init.sh checkout
 	exit
 fi
 
@@ -46,6 +46,6 @@ cd /
 git fetch upstream
 git merge "upstream/${variant}"
 
-#/.init.sh update
+#/.sysgit/init.sh update
 git sys-run update
 
