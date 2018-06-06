@@ -1,3 +1,30 @@
 #!/bin/bash
 
-echo "TODO"
+FILE_INIT_COMMANDS=/etc/sysgit/initcommand.sh
+
+get_history() {
+	zgrep -h 'Commandline: apt' \
+		/var/log/apt/history.log /var/log/apt/history.log.*.gz | \
+		grep -E --color=never \
+			"Commandline: apt(-get)?.* (install|remove|purge|autoremove)" |\
+		sed -r "s/Commandline: //" |\
+		sed -r "s/ install / install -y /" |\
+		sed -r "s/ install -y -y / install -y /"
+}
+
+if test "x$1" = "x--save"
+then
+	echo >>${FILE_INIT_COMMANDS}
+	echo "# Read from apt history.log" >>${FILE_INIT_COMMANDS}
+
+	get_history >>"${FILE_INIT_COMMANDS}"
+else
+	echo "Reading apt history:"
+	echo
+	get_history
+	echo
+	echo "Run"
+	echo "    git sys-apt-history --save"
+	echo "to add these lines to ${FILE_INIT_COMMANDS}"
+fi
+
