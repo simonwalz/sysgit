@@ -34,6 +34,22 @@ cmdadd() {
 	fi
 }
 
+# cmd-add:
+if test "x$1" = "x--help" || test "x$1" = "x-h"
+then
+	echo "Execute and save: system command"
+	echo "Commands are saved to ${FILE_INIT_COMMANDS}"
+	echo
+	echo "Usage: git sys-cmd [--add] system command"
+	echo
+	echo "Options:"
+	echo " --add - Do not execute command. Only save command."
+	echo
+	echo "Example":
+	echo "git sys-cmd apt install vim screen git"
+	exit 2
+fi
+
 if test "x$1" = "xapt" || test "x$1" = "xapt-get"
 then
 	if test "x$2" = "xinstall"
@@ -48,7 +64,7 @@ then
 fi
 
 # cmd-add:
-if test "x$1" = "--add"
+if test "x$1" = "x--add"
 then
 	shift
 	cmdadd "$@"
