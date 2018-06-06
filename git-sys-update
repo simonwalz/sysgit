@@ -1,51 +1,68 @@
 #!/bin/bash
 
-dosave=0
+do_save=0
 if test "x$1" = "x--save"
 then
 	shift
-	dosave=1
+	do_save=1
 fi
 
-variant="$1"
-if test "x${variant}" = "x"
-then
-	if test -f "/etc/sysgit/variant"
-	then
-		variant="$(cat "/etc/sysgit/variant")"
-	fi
-fi
-if test "x${variant}" = "x"
-then
-	variant=base
-fi
-
-if test "x${dosave}" = "x1"
-then
-	echo "${variant}" >"/etc/sysgit/variant"
-fi
-
+do_rebase=0
 if test "x$1" = "x--rebase"
 then
-	cd /
-	git fetch upstream
+	shift
+	do_rebase=1
+fi
 
-	rm /.git/hooks/post-merge
-	rm /.git/hooks/post-checkout
-
-	branch="$(git rev-parse --abbrev-ref HEAD)"
-	fork_point="$(git merge-base --fork-point "upstream/${variant}" "${branch}")"
-	git rebase --onto "upstream/${variant}" "${fork_point}" "${branch}"
-
-	/.sysgit/init.sh checkout
-	exit
+if test "x$1" = "x--help" || test "x$1" = "x-h"
+then
+	echo "git sys-update - Get commits from a forein repository"
+	echo
+	echo "Usage: git sys-update [options] <variant1> <variant2> ..."
+	echo
+	echo "Options:"
+	echo " --save - Save variants to /etc/sysgit/variants and use"
+	echo "          them as default."
+	echo " --rebase - Perfom git rebase instead of git merge."
+	echo " --help - Show this help message."
+	exit 2
 fi
 
 
+if test "x${1}" = "x"
+then
+	variants="base"
+	if test -f "/etc/sysgit/variant"
+	then
+		variants="$(cat "/etc/sysgit/variant")"
+	fi
+else
+	variants="$@"
+fi
+
+if test "x${do_save}" = "x1"
+then
+	echo "$@" >"/etc/sysgit/variant"
+fi
+
 cd /
-git fetch upstream
-git merge "upstream/${variant}"
+git fetch --all
+
+for v in ${variants}
+do
+	if test "x$(echo "${v}" | grep "/")" = "x"
+	then
+		v="upstream/${v}"
+	fi
+	echo "Updating variant: ${v}"
+
+	if test "x${do_rebase}" = "x1"
+	then
+		git rebase --fork-point "${v}"
+	else
+		git merge "${v}"
+	fi
+done
 
 #/.sysgit/init.sh update
 git sys-run update
-
