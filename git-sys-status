@@ -1,4 +1,5 @@
 #!/bin/bash
 
-debian-config-gitignore && git status -uall "$@"
+git sys-ignore-gen --update && \
+	git status -uall "$@"
 

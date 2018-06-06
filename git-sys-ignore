@@ -1,0 +1,21 @@
+#!/bin/bash
+
+SCRIPTPATH="$(readlink -f 2>/dev/null || perl -MCwd -e 'print Cwd::abs_path shift' $0)"
+cd "$(dirname "${SCRIPTPATH}")"
+
+if test "x$1" = "x" || test "x" = "x--list"
+then
+
+	cd extra.ignore.d
+
+	ls | sed -r "s/\..*$//"
+
+	exit 0
+fi
+
+mkdir -p /etc/sysgit/
+for ignore
+do
+	echo "extra.ignore.d/${ignore}" >>/etc/sysgit/ignore_config
+done
+
