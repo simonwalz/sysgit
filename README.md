@@ -180,3 +180,17 @@ git fetch upstream
 git merge upstream/<VARIANT>
 ```
 
+## Internal
+
+### Command: `apt-user-installed` (internal)
+
+List all user installed packages (or write them to `/etc/sysgit/apt-packages`)
+
+In minimal system variant, this script is automatically called by a apt hook.
+
+#### Options:
+
+* `--list` - Show list of installed packages
+* `--save` - Save list to `/etc/sysgit/apt-packages`
+* `--install` - Install Packages listed in `/etc/sysgit/apt-packages`
+

@@ -1,0 +1,41 @@
+#!/bin/bash
+
+if test "x$1" = "x--install"
+then
+	apt install -y $(cat /etc/sysgit/apt-packages)
+	exit 0
+fi
+
+get_packages() {
+	manual="$(apt-mark showmanual | sort)"
+
+	# substract:
+	substract="$(dpkg-query -W -f='${Package};${Priority}\n' | grep -E ";(required|important)$" | sed -r 's/;.*$//' | sort -u)"
+
+	manual="$(comm -2 -3 <(echo "${manual}") <(echo "${substract}"))"
+
+	#echo "${manual}" | xargs apt-cache rdepends --installed --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances
+
+	depends="$(grep -E "^(Pre-)?Depends:" /var/lib/dpkg/status)"
+
+	for p in ${manual}
+	do
+		# check if no rdepends:
+	#	if test "x$(apt-cache rdepends --installed --no-recommends --no-suggests --no-conflicts --no-breaks --no-replaces --no-enhances "${p}" | grep -vE "^    " | wc -l)" = "x2"
+		if test "x$(echo "${depends}" | grep -E " ${p} | ${p}, | ${p}:| ${p}\$")" = "x"
+		then
+			echo ${p}
+		fi
+	done
+}
+
+if test "x$1" = "x--save"
+then
+	if test "/var/lib/dpkg/status" -nt "/etc/sysgit/apt-packages"
+	then
+		get_packages >/etc/sysgit/apt-packages
+	fi
+else
+	get_packages
+fi
+
