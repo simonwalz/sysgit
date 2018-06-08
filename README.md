@@ -1,9 +1,10 @@
-# sysgit - git based debian provisioning toolkit
+# sysgit - git based Debian provisioning toolkit
 
-Let's manage and deploy debian systems with the help of a system-wide
+Let's manage and deploy Debian systems with the help of a system-wide
 git repository.
 
-sysgit provides some helpfull commands and git hooks for this task.
+sysgit provides some helpful commands and git hooks for this task.
+They are tested on *Debian* (real hosts and VM), *Proxmox* and *Raspbian*.
 
 ## Initialize
 
@@ -11,13 +12,13 @@ sysgit provides some helpfull commands and git hooks for this task.
 
 We provide some basic system variants:
 
-* **base** - Just the init script and the git hooks
-* **minimal** - Base system with sysgit repository as submodule
-* **full** - Anything helpfull
+* **base** - Just the init script and the git hooks (see [repo](https://github.com/simonwalz/sysgit-variants/tree/base))
+* **minimal** - Base system with sysgit repository as submodule (see [repo](https://github.com/simonwalz/sysgit-variants/tree/minimal))
+* **full** - Anything helpful (see [repo](https://github.com/simonwalz/sysgit-variants/tree/full))
 
 ### Initialize from an empty repository
 
-First, init the system-wide git repo:
+First, init the system-wide git repository:
 ```
 git init /
 ```
@@ -48,9 +49,9 @@ git push
 
 ### Initialize from existing repository
 
-First, init the system-wide git repo:
+First, init the system-wide git repository:
 ```sh
-git init .
+git init /
 ```
 
 Add your remote:
@@ -75,17 +76,15 @@ And run the init script:
 
 ### Port an other system-wide git not managed via sysgit:
 
-The git merge command fails if we try to merge an other repo.
+The git merge command fails if we try to merge an other repository.
 
 Thus use the commands in "Initialize from an empty repository" and
- use the following commands to rebase your existing commits:
+ use the following command insteed of the merge command:
 
 ```sh
-git remote add old GIT_URL
-git fetch old
-# git rebase --onto upstream/<VARIANT> --root old/master
+# git rebase --onto upstream/<VARIANT> --root master
 # i.e.
-git rebase --onto upstream/minimal --root old/master
+git rebase --onto upstream/minimal --root master
 
 # force push:
 git push -f
@@ -103,7 +102,7 @@ See [git documentation](https://git-scm.com/docs/). Use `git add FILE`, `git com
 
 ### Command: `git sys-status`
 
-Show git status WITHOUT unchanged debian system-files.
+Show git status WITHOUT unchanged Debian system-files.
 
 Usage: See [git status](https://git-scm.com/docs/git-status).
 
@@ -146,7 +145,7 @@ The index is saved to `/etc/sysgit/local-config.ignore-chk`
 
 ### Command: `git sys-diff`
 
-Show differences of a file to version of the debian package:
+Show differences of a file to version of the Debian package:
 
 #### Usage:
 ```sh
@@ -167,7 +166,7 @@ Example
 git sys-update minimal ansible
 ```
 
-You can obmit the variant parameters if you saved it in the past with
+You can omit the variant parameters if you saved it in the past with
 ```sh
 git sys-update --save <VARIANT> [<VARIANT2> ...]
 ```
