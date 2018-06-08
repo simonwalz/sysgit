@@ -65,4 +65,3 @@ do
 done
 
 #/.sysgit/init.sh update
-git sys-run update
