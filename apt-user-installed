@@ -2,6 +2,11 @@
 
 if test "x$1" = "x--install"
 then
+	if test \! -f "/etc/sysgit/apt-packages"
+	then
+		echo "Info: No apt-package file found. Thanks."
+		exit 0
+	fi
 	apt install -y $(cat /etc/sysgit/apt-packages)
 	exit 0
 fi
@@ -31,8 +36,10 @@ get_packages() {
 
 if test "x$1" = "x--save"
 then
-	if test "/var/lib/dpkg/status" -nt "/etc/sysgit/apt-packages"
+	if test \! -f "/etc/sysgit/apt-packages" || test \
+			"/var/lib/dpkg/status" -nt "/etc/sysgit/apt-packages"
 	then
+		mkdir -p "/etc/sysgit"
 		get_packages >/etc/sysgit/apt-packages
 	fi
 else
