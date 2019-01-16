@@ -42,8 +42,7 @@ And run the init script. This installs the git hooks and initialize the submodul
 (optional) Add your remote:
 ```
 git remote add origin GIT_URL
-git checkout -b master --track origin/master
-git push
+git push -u origin master
 ```
 
 
@@ -57,14 +56,15 @@ git init /
 Add your remote:
 ```sh
 git remote add origin GIT_URL
-git checkout -b master --track origin/master
+git fetch origin
+git branch --track "master" "origin/master"
 ```
 
 Use either:
 ```sh
-git reset --mixed origin/master 
+git reset --mixed && git checkout-index -a
 # or
-git reset --hard origin/master
+git reset --hard && git checkout-index -a
 ```
 to restore your files. `--mixed` only write non-existing files.  `--hard` overwrites all files.
 
